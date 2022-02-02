@@ -13,6 +13,7 @@ function App() {
         <input className="input"/>
         <button className="send">^</button>      
       </footer>
+      <div className='message'/>
       </div>
   );  
   

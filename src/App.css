@@ -58,3 +58,18 @@
   right: 1.15rem;
   cursor: pointer;
 }
+
+.messages {
+  display: flex;
+  flex-direction:column-reverse;
+  align-items: flex-start;
+  overflow: auto;
+}
+
+.message{
+  color: paleturquoise;
+  background: black; 
+  padding: 0.5rem 1rem; 
+  margin: 0.2rem;
+  border-radius: 0.3rem; 
+}
