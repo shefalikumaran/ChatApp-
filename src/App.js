@@ -1,19 +1,22 @@
-import logo from './logo.svg';
 import './App.css';
 import TextInput from './TextInput';
 import React, { useState } from "react"
+import Camera from 'react-snap-pic'
 
 
 function App() {
-  //why are we defining sendMessage here and not in TextInput 
-  const [messages, setMessages] = useState("");
+  const [showCamera, setShowCamera] = useState(false)
+  const [messages, setMessages] = useState([]);
   function sendMessage (msg){
     console.log("MY MESSAGE", msg);
     setMessages([...messages, msg]);
   }
+  function takePicture (img) {
+    console.log(img)
+    setShowCamera(false)    
+  }
   console.log(messages);
   return (
-    // makes app class, creates header and puts icon and title inside, creates footer with a text input bar and send button (^) 
     <div className="App"> 
       <header className="header"> 
         <div className="icon"/>
@@ -24,9 +27,12 @@ function App() {
           return <div className='message'>{msg}</div>
         })}
       </div>
-      <TextInput sendMessage ={sendMessage}/>
+      <TextInput sendMessage={text=> this.props.onSend(text)} 
+      showCamera={()=>setShowCamera(true)}
+      />
+      {showCamera && <Camera takePicture={takePicture} />}
     </div>
-  );  
+  );
 }
 
 export default App; 
